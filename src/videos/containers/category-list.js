@@ -8,7 +8,12 @@ import Separator from '../../sections/components/horizontal-separator';
 // import Suggestion from '../components/suggestion';
 import Category from '../components/category';
 import Layout from '../components/category-list-layout';
+import { connect } from 'react-redux';
 
+function mapStateToProps(state) {
+  // debugger
+  return {}
+}
 
 class CategoryList extends Component {
   keyExtractor = item => item.id.toString()
@@ -22,7 +27,7 @@ class CategoryList extends Component {
   render() {
     return (
       <Layout
-      title= "Categorias"
+        title="Categorias"
       >
         <FlatList
           horizontal
@@ -38,4 +43,4 @@ class CategoryList extends Component {
   }
 }
 
-export default CategoryList;
+export default connect(mapStateToProps)(CategoryList);

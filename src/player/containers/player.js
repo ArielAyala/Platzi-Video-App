@@ -50,7 +50,7 @@ class Player extends Component {
                     <ControlLayout>
                         <PlayPause
                             onPress={this.playPause}
-                            pause={this.state.paused}
+                            paused={this.state.paused}
                         />
                         <Text>progres bar</Text>
                         <Text>tieme left</Text>
