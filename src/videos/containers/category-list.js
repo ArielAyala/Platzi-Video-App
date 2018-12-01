@@ -12,7 +12,9 @@ import { connect } from 'react-redux';
 
 function mapStateToProps(state) {
   // debugger
-  return {}
+  return {
+    list: state.categoryList
+  }
 }
 
 class CategoryList extends Component {

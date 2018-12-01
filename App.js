@@ -21,49 +21,47 @@ import API from './utils/api';
 import CategoryList from './src/videos/containers/category-list.js';
 import Player from './src/player/containers/player';
 import { Provider } from 'react-redux';
-import store from './store';
+import { PersistGate } from 'redux-persist/integration/react';
+import { store, persistor } from './store';
+import Loading from './src/sections/components/loading';
 
 type Props = {};
 export default class App extends Component<Props> {
   state = {
-    // suggestionList: [],
-    // categorysList: [],
-    // loading: true,
+
   }
   async componentDidMount() {
-    const movies = await API.getSuggestion(10);
-    const categories = await API.getMovies();
-    // console.log(movies);
-    // console.log(categories);
-    // this.setState({
-    // suggestionList: movies,
-    // categorysList: categories,
-    // loading: false,
-    // })
+    const categoryList = await API.getMovies();
     store.dispatch({
       type: 'SET_CATEGORY_LIST',
       payload: {
-        categories
+        categoryList
       }
     })
+    const suggestionList = await API.getSuggestion(10);
     store.dispatch({
       type: 'SET_SUGGESTION_LIST',
       payload: {
-        movies
+        suggestionList
       }
     })
   }
+
+
   render() {
     return (
       <Provider
         store={store}
       >
-        <Home>
-          <Header />
-          <Player />
-          <Text>buscador</Text>
-          <Text>categorías</Text>
-          {/* {
+        <PersistGate
+          loading={<Loading />}
+          persistor={persistor}
+        >
+          <Home>
+            <Header />
+            <Player />
+            <Text>buscadorr</Text>
+            {/* {
           this.state.loading ?
             <View>
               <ActivityIndicator size="large" color="##ff0050" />
@@ -78,9 +76,11 @@ export default class App extends Component<Props> {
             />
         } */}
 
-          <CategoryList />
-          <SuggestionList />
-        </Home>
+            <CategoryList />
+            <SuggestionList />
+          </Home>
+        </PersistGate>
+
       </Provider>
 
     );
