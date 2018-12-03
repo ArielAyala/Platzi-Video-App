@@ -7,17 +7,16 @@ import {
 
 function SuggestionListLayout(props) {
     return (
-        <View style= {styles.container} >
-            <Text style = {styles.title} >{props.title}</Text>
+        <View style={styles.container}>
+            <Text style={styles.title}>{props.title}</Text>
             {props.children}
         </View>
     )
-
 }
 
 const styles = StyleSheet.create({
-    container:{
-        paddingVertical:10,
+    container: {
+        paddingVertical: 10,
         flex: 1,
     },
     title: {
@@ -25,8 +24,8 @@ const styles = StyleSheet.create({
         fontSize: 20,
         marginBottom: 10,
         fontWeight: 'bold',
-        marginLeft:8,
+        marginLeft: 8,
     }
 })
 
-export default SuggestionListLayout;
+export default SuggestionListLayout

@@ -1,8 +1,7 @@
 function videos(state = {}, action) {
     switch (action.type) {
-        case 'SET_SUGGESTION_LIST': {
+        case 'SET_SEGGESTION_LIST': {
             return { ...state, ...action.payload }
-            // movies:[]
         }
         case 'SET_CATEGORY_LIST': {
             return { ...state, ...action.payload }
@@ -10,8 +9,6 @@ function videos(state = {}, action) {
         default:
             return state
     }
-    return state;
 }
-
 
 export default videos;

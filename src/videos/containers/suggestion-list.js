@@ -9,7 +9,6 @@ import Separator from '../components/vertical-separator';
 import Suggestion from '../components/suggestion';
 import { connect } from 'react-redux';
 
-
 function mapStateToProps(state) {
     return {
         list: state.suggestionList
@@ -17,34 +16,30 @@ function mapStateToProps(state) {
 }
 
 class SuggestionList extends Component {
-
     keyExtractor = item => item.id.toString()
-
-    renderEmpty = () => <Empty text="No hay sugerencias" />
-
+    renderEmtpy = () => <Empty text="No hay sugerencias :(" />
     itemSeparator = () => <Separator />
-
     renderItem = ({ item }) => {
         return (
             <Suggestion {...item} />
         )
     }
-
     render() {
+
         return (
-            <Layout title="Recomendato para ti" >
+            <Layout
+                title="Recomendado para ti"
+            >
                 <FlatList
                     keyExtractor={this.keyExtractor}
                     data={this.props.list}
-                    ListEmptyComponent={this.renderEmpty}
+                    ListEmptyComponent={this.renderEmtpy}
                     ItemSeparatorComponent={this.itemSeparator}
-                    // renderItem={({ item }) => <Text>{item.title}</Text>}
                     renderItem={this.renderItem}
                 />
             </Layout>
-
         )
     }
 }
 
-export default connect(mapStateToProps)(SuggestionList);
+export default connect(mapStateToProps)(SuggestionList)
