@@ -6,8 +6,9 @@ import { store, persistor } from './store';
 import Loading from './src/sections/components/loading';
 import AppLayout from './src/app';
 
-type Props = {};
-export default class App extends Component<Props> {
+
+// type Props = {};
+export default class App extends Component {
   render() {
     return (
       <Provider
